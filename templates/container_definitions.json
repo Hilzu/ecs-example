@@ -1,0 +1,23 @@
+[
+  {
+    "name": "app-container",
+    "image": "hashicorp/http-echo",
+    "command": ["-text='Hei maailma!'"],
+    "cpu": ${cpu},
+    "memoryReservation": ${memory},
+    "memory": ${memory * 2},
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-region": "${region}",
+        "awslogs-group": "${log_group}",
+        "awslogs-stream-prefix": "app-service"
+      }
+    },
+    "portMappings": [
+      {
+        "containerPort": 5678
+      }
+    ]
+  }
+]
